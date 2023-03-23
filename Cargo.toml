@@ -1,5 +1,41 @@
-[workspace]
-members = [
-    "led-roulette",
-    "servo-control"
-]
+[package]
+name = "nucleo-f767"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies.embassy-stm32]
+version = "0.1.0"
+git = "https://github.com/embassy-rs/embassy.git"
+features = ["nightly", "stm32f767zi", "time-driver-any", "exti"]
+
+[dependencies.embassy-executor]
+version = "0.1.0"
+git = "https://github.com/embassy-rs/embassy.git"
+features = ["defmt", "integrated-timers"]
+
+[dependencies.embassy-time]
+version = "0.1.0"
+git = "https://github.com/embassy-rs/embassy.git"
+features = ["defmt"]
+
+[dependencies.embassy-usb]
+version = "0.1.0"
+git = "https://github.com/embassy-rs/embassy.git"
+features = ["defmt"]
+
+[dependencies]
+futures = { version = "0.3.17", default-features = false, features = ["async-await"] }
+defmt = "0.3"
+defmt-rtt = "0.4"
+
+
+
+cortex-m = { version = "0.7.6", features = ["critical-section-single-core"] }
+cortex-m-rt = "0.7.0"
+panic-probe = { version = "0.3", features = ["print-defmt"] }
+
+
+[profile.release]
+codegen-units = 1
+lto = true
