@@ -80,6 +80,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "40ac3d0c0a542d0ab5521211f873f62706a7136df415676f676d347e5a41dd80"
 dependencies = [
  "bitflags",
+ "defmt",
  "embedded-hal 0.2.7",
  "nb 1.1.0",
  "vcell",
@@ -336,6 +337,7 @@ name = "embassy-embedded-hal"
 version = "0.1.0"
 source = "git+https://github.com/embassy-rs/embassy.git#b6663a013f8632cefbc6d6ab9a9aa7afbcd1314b"
 dependencies = [
+ "defmt",
  "embassy-sync",
  "embedded-hal 0.2.7",
  "embedded-hal 1.0.0-alpha.9",
@@ -370,6 +372,7 @@ name = "embassy-hal-common"
 version = "0.1.0"
 source = "git+https://github.com/embassy-rs/embassy.git#b6663a013f8632cefbc6d6ab9a9aa7afbcd1314b"
 dependencies = [
+ "defmt",
  "num-traits",
 ]
 
@@ -388,6 +391,9 @@ dependencies = [
 name = "embassy-net-driver"
 version = "0.1.0"
 source = "git+https://github.com/embassy-rs/embassy.git#b6663a013f8632cefbc6d6ab9a9aa7afbcd1314b"
+dependencies = [
+ "defmt",
+]
 
 [[package]]
 name = "embassy-net-driver-channel"
@@ -410,6 +416,7 @@ dependencies = [
  "cortex-m",
  "cortex-m-rt",
  "critical-section",
+ "defmt",
  "embassy-cortex-m",
  "embassy-embedded-hal",
  "embassy-executor",
@@ -443,6 +450,7 @@ source = "git+https://github.com/embassy-rs/embassy.git#b6663a013f8632cefbc6d6ab
 dependencies = [
  "cfg-if",
  "critical-section",
+ "defmt",
  "embedded-io",
  "futures-util",
  "heapless",
@@ -516,6 +524,9 @@ name = "embedded-io"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ef1a6892d9eef45c8fa6b9e0086428a2cca8491aca8f787c534a3d6d0bcb3ced"
+dependencies = [
+ "defmt",
+]
 
 [[package]]
 name = "embedded-storage"
@@ -790,6 +801,7 @@ dependencies = [
  "embassy-time",
  "embassy-usb",
  "futures",
+ "heapless",
  "panic-probe",
 ]
 
