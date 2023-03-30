@@ -49,9 +49,9 @@ async fn main(spawner: Spawner) {
     let driver = Driver::new_fs(p.USB_OTG_FS, irq, p.PA12, p.PA11, &mut buffer);
 
     let mut config = embassy_usb::Config::new(0xc0de, 0xcafe);
-    config.manufacturer = Some("Embassy");
-    config.product = Some("USB-sreial example");
-    config.product = Some("12345678");
+    config.manufacturer = Some("MTUCI");
+    config.product = Some("Drone V1");
+    config.serial_number = Some("1");
 
     let mut sevice_descriptor = [0; 256];
     let mut config_descriptor = [0; 256];
@@ -84,17 +84,20 @@ async fn main(spawner: Spawner) {
         }
     };
 
+    info!("Before join");
+
     join(usb_fut, echo_fut).await;
-    let blue = Output::new(p.PB7, Level::Low, Speed::Low).degrade();
-    spawner.spawn(blink(blue)).unwrap();
 
-    let mut button = ExtiInput::new(Input::new(p.PC13, Pull::Down), p.EXTI13);
-
-
-    loop {
-        button.wait_for_falling_edge().await;
-        info!("*click*");
-    }
+//    let blue = Output::new(p.PB7, Level::Low, Speed::Low).degrade();
+//    spawner.spawn(blink(blue)).unwrap();
+//
+//    let mut button = ExtiInput::new(Input::new(p.PC13, Pull::Down), p.EXTI13);
+//
+//
+//    loop {
+//        button.wait_for_falling_edge().await;
+//        info!("*click*");
+//    }
 }
 
 struct Disconnect {}
